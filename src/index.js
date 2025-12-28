@@ -10,3 +10,9 @@ function initDropdown(dropdown) {
 }
 
 document.querySelectorAll("[data-dropdown]").forEach(initDropdown);
+
+document.addEventListener("click", () => {
+	document.querySelectorAll(".dropdown.is-open").forEach((dropdown) => {
+		dropdown.classList.remove("is-open");
+	});
+});
