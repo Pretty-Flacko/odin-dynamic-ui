@@ -1,0 +1,25 @@
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+.dropdown__menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	min-width: 150px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: none;
+}
+.dropdown__menu li {
+	padding: 0.5rem;
+}
+.dropdown__menu li:hover {
+	background-color: #f0f0f0;
+}
+.dropdown.is-open .dropdown__menu {
+	display: block;
+}
