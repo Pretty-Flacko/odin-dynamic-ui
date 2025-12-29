@@ -23,10 +23,24 @@ function initCarousel(carousel) {
 	const dotsContainer = carousel.querySelector(".carousel__dots");
 	const dots = [];
 
+	let interval = setInterval(() => {
+		goToSlide(currentIndex + 1);
+	}, 5000);
+
+	function resetInterval() {
+		clearInterval(interval);
+		interval = setInterval(() => {
+			goToSlide(currentIndex + 1);
+		}, 5000);
+	}
+
 	slides.forEach((_, i) => {
 		const dot = document.createElement("button");
 		dot.classList.add("carousel__dot");
-		dot.addEventListener("click", () => goToSlide(i));
+		dot.addEventListener("click", () => {
+			goToSlide(i);
+			resetInterval();
+		});
 
 		dots.push(dot);
 		dotsContainer.appendChild(dot);
@@ -49,9 +63,11 @@ function initCarousel(carousel) {
 
 	prevBtn.addEventListener("click", () => {
 		goToSlide(currentIndex - 1);
+		resetInterval();
 	});
 	nextBtn.addEventListener("click", () => {
 		goToSlide(currentIndex + 1);
+		resetInterval();
 	});
 }
 
