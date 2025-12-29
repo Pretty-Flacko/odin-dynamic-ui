@@ -49,8 +49,15 @@ function initCarousel(carousel) {
 	let currentIndex = 0;
 
 	function goToSlide(index) {
-		currentIndex = index;
-		track.style.transform = `translateX(-${index * 100}%)`;
+		if (index < 0) {
+			currentIndex = slides.length - 1;
+		} else if (index >= slides.length) {
+			currentIndex = 0;
+		} else {
+			currentIndex = index;
+		}
+
+		track.style.transform = `translateX(-${currentIndex * 100}%)`;
 
 		dots.forEach((dot) => dot.classList.remove("is-active"));
 		dots[currentIndex].classList.add("is-active");
@@ -58,8 +65,8 @@ function initCarousel(carousel) {
 
 	goToSlide(0);
 
-	const prevBtn = document.querySelector(".carousel__btn--prev");
-	const nextBtn = document.querySelector(".carousel__btn--next");
+	const prevBtn = carousel.querySelector(".carousel__btn--prev");
+	const nextBtn = carousel.querySelector(".carousel__btn--next");
 
 	prevBtn.addEventListener("click", () => {
 		goToSlide(currentIndex - 1);
