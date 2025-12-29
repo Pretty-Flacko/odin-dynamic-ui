@@ -52,3 +52,15 @@ body {
 .dropdown.is-open .dropdown__menu {
 	opacity: 1;
 }
+
+.carousel {
+	position: relative;
+	width: 400px;
+	overflow: hidden;
+}
+.carousel__track {
+	display: flex;
+}
+.carousel__slide {
+	width: 100%;
+}
