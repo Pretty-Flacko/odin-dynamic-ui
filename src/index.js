@@ -18,13 +18,28 @@ document.addEventListener("click", () => {
 });
 
 function initCarousel(carousel) {
-	const track = document.querySelector(".carousel__track");
+	const track = carousel.querySelector(".carousel__track");
+	const slides = carousel.querySelectorAll(".carousel__slide");
+	const dotsContainer = carousel.querySelector(".carousel__dots");
+	const dots = [];
+
+	slides.forEach((_, i) => {
+		const dot = document.createElement("button");
+		dot.classList.add("carousel__dot");
+		dot.addEventListener("click", () => goToSlide(i));
+
+		dots.push(dot);
+		dotsContainer.appendChild(dot);
+	});
 
 	let currentIndex = 0;
 
 	function goToSlide(index) {
 		currentIndex = index;
 		track.style.transform = `translateX(-${index * 100}%)`;
+
+		dots.forEach((dot) => dot.classList.remove("is-active"));
+		dots[currentIndex].classList.add("is-active");
 	}
 
 	goToSlide(0);

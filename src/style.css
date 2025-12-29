@@ -64,3 +64,13 @@ body {
 .carousel__slide {
 	width: 100%;
 }
+.carousel__dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #fff;
+	border: none;
+}
+.carousel__dot.is-active {
+	background-color: #333;
+}
